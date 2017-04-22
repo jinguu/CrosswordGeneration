@@ -1,1 +1,1 @@
-# 4701CrosswordGen
+# CS4701 (Artificial Intelligence) - Crossword Generation
