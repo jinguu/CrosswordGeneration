@@ -1,8 +1,6 @@
 /**
  * Created by cece on 5/4/2017.
  */
-import javafx.scene.control.TextInputDialog;
-
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -11,12 +9,13 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 
-public class CrosswordGen {
+public class CrosswordGen
+{
     public static void main(String[] args)
     {
-        SwingUtilities.invokeLater(new Runnable(){
+        SwingUtilities.invokeLater(new Runnable()
+        {
             @Override
             public void run()
             {
@@ -32,35 +31,35 @@ public class CrosswordGen {
 
         f.getContentPane().setLayout(new BorderLayout());
 
-        JPanel container = new JPanel(null);
+        JPanel container = new JPanel(new FlowLayout());
         final CrosswordPanel panel = new CrosswordPanel();
         container.add(panel);
         f.getContentPane().add(container, BorderLayout.CENTER);
 
-        String width = JOptionPane.showInputDialog(f, "Enter a grid width:");
-        String height = JOptionPane.showInputDialog(f, "Enter a grid height:");
-
         JButton generateButton = new JButton("Generate");
-        generateButton.addActionListener(new ActionListener() {
+        generateButton.addActionListener(new ActionListener()
+        {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                generate(panel, Integer.parseInt(width.toString()), Integer.parseInt(height.toString()));
+
+                String width = JOptionPane.showInputDialog("Enter width of crossword:");
+                String height = JOptionPane.showInputDialog("Enter height of crossword:");
+                generate(panel, Integer.parseInt(width), Integer.parseInt(height));
             }
         });
         f.getContentPane().add(generateButton, BorderLayout.SOUTH);
 
-        f.setSize(600, 600);
+        f.setSize(700, 700);
         f.setLocationRelativeTo(null);
         f.setVisible(true);
-
     }
 
     private static Random random = new Random(0);
     private static void generate(CrosswordPanel panel, int width, int height)
     {
-        int w = width;
-        int h = height;
+        int w = width ;
+        int h = height ;
         char crossword[][] = new char[w][h];
         for (int y=0; y<h; y++)
         {
