@@ -1,0 +1,139 @@
+/**
+ * Created by cece on 5/4/2017.
+ */
+import javafx.scene.control.TextInputDialog;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+
+public class CrosswordGen {
+    public static void main(String[] args)
+    {
+        SwingUtilities.invokeLater(new Runnable(){
+            @Override
+            public void run()
+            {
+                createAndShowGUI();
+            }
+        });
+    }
+
+    private static void createAndShowGUI()
+    {
+        JFrame f = new JFrame();
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        f.getContentPane().setLayout(new BorderLayout());
+
+        JPanel container = new JPanel(null);
+        final CrosswordPanel panel = new CrosswordPanel();
+        container.add(panel);
+        f.getContentPane().add(container, BorderLayout.CENTER);
+
+        String width = JOptionPane.showInputDialog(f, "Enter a grid width:");
+        String height = JOptionPane.showInputDialog(f, "Enter a grid height:");
+
+        JButton generateButton = new JButton("Generate");
+        generateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                generate(panel, Integer.parseInt(width.toString()), Integer.parseInt(height.toString()));
+            }
+        });
+        f.getContentPane().add(generateButton, BorderLayout.SOUTH);
+
+        f.setSize(600, 600);
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
+
+    }
+
+    private static Random random = new Random(0);
+    private static void generate(CrosswordPanel panel, int width, int height)
+    {
+        int w = width;
+        int h = height;
+        char crossword[][] = new char[w][h];
+        for (int y=0; y<h; y++)
+        {
+            for (int x=0; x<w; x++)
+            {
+                if (random.nextFloat() > 0.2)
+                {
+                    char c = (char)('A' + random.nextInt(26));
+                    crossword[x][y] = c;
+                }
+            }
+        }
+
+        panel.setCrossword(crossword);
+    }
+
+}
+
+
+class CrosswordPanel extends JPanel
+{
+    private JTextField textFields[][];
+
+    void setCrossword(char array[][])
+    {
+        removeAll();
+        int w = array.length;
+        int h = array[0].length;
+        setLayout(new GridLayout(w, h));
+        textFields = new JTextField[w][h];
+
+        for (int y=0; y<h; y++)
+        {
+            for (int x=0; x<w; x++)
+            {
+                char c = array[x][y];
+                if (c != 0)
+                {
+                    textFields[x][y] = new JTextField(String.valueOf(c));
+                    textFields[x][y].setFont(textFields[x][y].getFont().deriveFont(20.0f));
+                    add(textFields[x][y]);
+                }
+                else
+                {
+                    add(new JLabel());
+                }
+            }
+        }
+        getParent().validate();
+        repaint();
+    }
+
+    char[][] getCrossword()
+    {
+        int w = textFields.length;
+        int h = textFields[0].length;
+        char crossword[][] = new char[w][h];
+        for (int y=0; y<h; y++)
+        {
+            for (int x=0; x<w; x++)
+            {
+                if (textFields[x][y] != null)
+                {
+                    String s = textFields[x][y].getText();
+                    if (s.length() > 0)
+                    {
+                        crossword[x][y] = s.charAt(0);
+                    }
+
+                }
+            }
+        }
+        return crossword;
+    }
+
+}
