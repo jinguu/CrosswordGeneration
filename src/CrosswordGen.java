@@ -10,12 +10,10 @@ import java.util.Random;
 
 import javax.swing.*;
 
-public class CrosswordGen
-{
-    public static void main(String[] args)
-    {
-        SwingUtilities.invokeLater(new Runnable()
-        {
+public class CrosswordGen {
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run()
             {
@@ -24,8 +22,7 @@ public class CrosswordGen
         });
     }
 
-    private static void createAndShowGUI()
-    {
+    private static void createAndShowGUI() {
         JFrame f = new JFrame();
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -37,12 +34,9 @@ public class CrosswordGen
         f.getContentPane().add(container, BorderLayout.CENTER);
 
         JButton generateButton = new JButton("Generate");
-        generateButton.addActionListener(new ActionListener()
-        {
+        generateButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
-            {
-
+            public void actionPerformed(ActionEvent e) {
                 String width = JOptionPane.showInputDialog("Enter width of crossword:");
                 String height = JOptionPane.showInputDialog("Enter height of crossword:");
                 generate(panel, Integer.parseInt(width), Integer.parseInt(height));
@@ -56,13 +50,11 @@ public class CrosswordGen
     }
 
     private static Random random = new Random(0);
-    private static void generate(CrosswordPanel panel, int width, int height)
-    {
+    private static void generate(CrosswordPanel panel, int width, int height) {
         int w = width ;
         int h = height ;
         char crossword[][] = new char[w][h];
-        for (int y=0; y<h; y++)
-        {
+        for (int y=0; y<h; y++) {
             for (int x=0; x<w; x++)
             {
                 if (random.nextFloat() > 0.2)
@@ -79,31 +71,27 @@ public class CrosswordGen
 }
 
 
-class CrosswordPanel extends JPanel
-{
+class CrosswordPanel extends JPanel {
     private JTextField textFields[][];
 
-    void setCrossword(char array[][])
-    {
+    void setCrossword(char array[][]) {
         removeAll();
         int w = array.length;
         int h = array[0].length;
         setLayout(new GridLayout(w, h));
         textFields = new JTextField[w][h];
 
-        for (int y=0; y<h; y++)
-        {
-            for (int x=0; x<w; x++)
-            {
+        for (int y=0; y<h; y++) {
+
+            for (int x=0; x<w; x++) {
+
                 char c = array[x][y];
-                if (c != 0)
-                {
+                if (c != 0) {
                     textFields[x][y] = new JTextField(String.valueOf(c));
                     textFields[x][y].setFont(textFields[x][y].getFont().deriveFont(20.0f));
                     add(textFields[x][y]);
                 }
-                else
-                {
+                else {
                     add(new JLabel());
                 }
             }
@@ -112,20 +100,16 @@ class CrosswordPanel extends JPanel
         repaint();
     }
 
-    char[][] getCrossword()
-    {
+    char[][] getCrossword() {
         int w = textFields.length;
         int h = textFields[0].length;
         char crossword[][] = new char[w][h];
-        for (int y=0; y<h; y++)
-        {
-            for (int x=0; x<w; x++)
-            {
-                if (textFields[x][y] != null)
-                {
+
+        for (int y=0; y<h; y++) {
+            for (int x=0; x<w; x++) {
+                if (textFields[x][y] != null) {
                     String s = textFields[x][y].getText();
-                    if (s.length() > 0)
-                    {
+                    if (s.length() > 0) {
                         crossword[x][y] = s.charAt(0);
                     }
 
