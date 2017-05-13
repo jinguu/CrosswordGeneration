@@ -212,15 +212,16 @@ class CrosswordPanel extends JPanel {
         }
 
         for(ArrayList<Pair> arr : emptySpaces) {
+
             if(arr.get(0).getKey().equals(arr.get(1).getKey())) { // same x
                 int length = (int) arr.get(1).getValue()+1;
-                int row = (int) arr.get(0).getKey();
+                int row = (int) arr.get(0).getValue();
 
                 for(String word : words) {
                     int counter = 0;
                     if(word.length() == length) { // word fits
                         for(int i= (int) arr.get(0).getValue(); i< length; i++) {
-                            textFields[row][i] = new JTextField(word.charAt(counter));
+                            textFields[row][i] = new JTextField(Character.toString(word.charAt(counter)));
                             textFields[row][i].setFont(textFields[row][i].getFont().deriveFont(20.0f));
                             add(textFields[row][i]);
                             counter++;
@@ -230,13 +231,13 @@ class CrosswordPanel extends JPanel {
             }
             else { // same y
                 int length = (int) arr.get(1).getKey()+1;
-                int col = (int) arr.get(0).getValue();
+                int col = (int) arr.get(0).getKey();
 
                 for(String word : words) {
                     int counter = 0;
                     if(word.length() == length) { // word fits
-                        for(int i= (int) arr.get(0).getKey(); i< (int) arr.get(1).getKey(); i++) {
-                            textFields[i][col] = new JTextField(word.charAt(counter));
+                        for(int i= (int) arr.get(0).getKey(); i< length; i++) {
+                            textFields[i][col] = new JTextField(Character.toString(word.charAt(counter)));
                             textFields[i][col].setFont(textFields[i][col].getFont().deriveFont(20.0f));
                             add(textFields[i][col]);
                             counter++;
