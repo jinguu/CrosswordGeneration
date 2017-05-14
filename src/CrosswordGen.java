@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.stream.Stream;
 
 import javax.swing.*;
 
@@ -80,6 +81,7 @@ public class CrosswordGen {
             }
         }
 
+        System.out.println(Arrays.deepToString(crossword));
         panel.setCrossword(crossword);
     }
 
@@ -104,13 +106,12 @@ class CrosswordPanel extends JPanel {
 
 
         /*TODO: unify two for loops*/
-
         for (int x=0; x<w; x++) {
             Pair<Integer, Integer> start = new Pair(x,0);
             int len = 0;
             for (int y=0; y<h; y++) {
-                char c = array[x][y];
-                if (c == 0 ) { // reached null
+                char c = array[y][x];
+                if (c == (char) 0 ) { // reached null
                     if(len > 1) { // word is longer than 1
                         Pair<Integer, Integer> end = new Pair(x,y-1);
                         ArrayList<Pair> toAdd = new ArrayList<Pair>(2);
@@ -122,9 +123,13 @@ class CrosswordPanel extends JPanel {
                         start = new Pair(x,y+1);
                         len = 0;
                     }
+                    else {
+                        start = new Pair(x,y+1);
+                        len = 0;
+                    }
                 }
                 else if(y == h-1) { // reached end of row
-                    if(len > 1) { // word is longer than 1
+                    if((y - start.getValue() + 1 > 1)) { // word is longer than 1
                         Pair<Integer, Integer> end = new Pair(x,y);
                         ArrayList<Pair> toAdd = new ArrayList<Pair>(2);
                         toAdd.add(start);
@@ -133,6 +138,9 @@ class CrosswordPanel extends JPanel {
 
                         // reset
                         start = new Pair(x,y+1);
+                        len = 0;
+                    }
+                    else {
                         len = 0;
                     }
                 }
@@ -146,11 +154,30 @@ class CrosswordPanel extends JPanel {
             Pair<Integer, Integer> start = new Pair(0,y);
             int len = 0;
             for (int x=0; x<w; x++) {
-                char c = array[x][y];
-                if (c == 0 ) { // reached null
+                char c = array[y][x];
+
+                if (c == 0) { // reached null
                     if(len > 1) { // word is longer than 1
                         Pair<Integer, Integer> end = new Pair(x-1,y);
                         ArrayList<Pair> toAdd = new ArrayList<Pair>(2);
+                        toAdd.add(start);
+                        toAdd.add(end);
+                        emptySpaces.add(toAdd);
+
+                        // reset4
+                        start = new Pair(x+1,y);
+                        len = 0;
+                    }
+                    else {
+                        start = new Pair(x+1,y);
+                        len = 0;
+                    }
+                }
+                else if(x == w-1) { // reached end of col
+                    if((x - start.getKey() + 1 > 1)) { // word is longer than 1
+                        Pair<Integer, Integer> end = new Pair(x,y);
+                        ArrayList<Pair> toAdd = new ArrayList<Pair>(2);
+
                         toAdd.add(start);
                         toAdd.add(end);
                         emptySpaces.add(toAdd);
@@ -159,17 +186,7 @@ class CrosswordPanel extends JPanel {
                         start = new Pair(x+1,y);
                         len = 0;
                     }
-                }
-                else if(x == w-1) { // reached end of col
-                    if(len > 1) { // word is longer than 1
-                        Pair<Integer, Integer> end = new Pair(x,y);
-                        ArrayList<Pair> toAdd = new ArrayList<Pair>(2);
-                        toAdd.add(start);
-                        toAdd.add(end);
-                        emptySpaces.add(toAdd);
-
-                        // reset
-                        start = new Pair(x+1,y);
+                    else {
                         len = 0;
                     }
                 }
@@ -179,7 +196,7 @@ class CrosswordPanel extends JPanel {
             }
         }
 
-
+        System.out.println(emptySpaces);
         fillCrossword();
 
         getParent().validate();
@@ -217,7 +234,9 @@ class CrosswordPanel extends JPanel {
             }
             if (dir.equals("down")) {
                 int counter = 0;
-                for(int i= (int) arr.get(0).getKey(); i<((int) arr.get(1).getKey() + choice.length()); i++) {
+                for(int i= (int) arr.get(0).getKey(); i<((int) arr.get(0).getKey() + choice.length()); i++) {
+                    System.out.println("key: " + arr.get(0));
+                    System.out.println(arr.get(1).getKey());
                     System.out.println("set " + choice.charAt(counter) + " at " + i + ", " + (int) arr.get(0).getValue());
                     crossword[i][(int) arr.get(0).getValue()] = choice.charAt(counter);
                     counter++;
