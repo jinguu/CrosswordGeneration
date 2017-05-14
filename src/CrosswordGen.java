@@ -92,6 +92,7 @@ class CrosswordPanel extends JPanel {
     private int w;
     private int h;
     private ArrayList<ArrayList<Pair>> emptySpaces;
+    ArrayList<String> words;
 
     void setCrossword(char array[][]) {
         crossword = array;
@@ -187,12 +188,62 @@ class CrosswordPanel extends JPanel {
 
     void fillCrossword() {
         textFields = new JTextField[w][h];
+        words = parseJSON("src/json/wordlist.json");
 
+        for(ArrayList<Pair> arr : emptySpaces) {
+            String dir = "";
+            System.out.println(arr);
+            if(arr.get(0).getValue() == arr.get(1).getValue()) {
+                dir = "down";
+            }
+            else if(arr.get(0).getKey() == arr.get(1).getKey()) {
+                dir = "across";
+            }
+            System.out.println(arr);
+            String choice = "";
+            for(String word : words) {
+                if(canPlaceWord(arr.get(0), arr.get(1), word) && choice == "") {
+                    choice = word;
+                }
+            }
+            System.out.println(dir);
+            if (dir.equals("across")) {
+                int counter = 0;
+                for(int i= (int) arr.get(0).getValue(); i<((int) arr.get(0).getValue()+choice.length()); i++) {
+                    System.out.println("set " + choice.charAt(counter) + " at " + (int) arr.get(0).getValue() + ", " + i);
+                    crossword[(int) arr.get(0).getKey()][i] = choice.charAt(counter);
+                    counter++;
+                }
+            }
+            if (dir.equals("down")) {
+                int counter = 0;
+                for(int i= (int) arr.get(0).getKey(); i<((int) arr.get(1).getKey() + choice.length()); i++) {
+                    System.out.println("set " + choice.charAt(counter) + " at " + i + ", " + (int) arr.get(0).getValue());
+                    crossword[i][(int) arr.get(0).getValue()] = choice.charAt(counter);
+                    counter++;
+                }
+            }
+            words.remove(choice);
+        }
+
+        for(int i=0; i<h; i++) {
+            for(int j=0; j<w; j++) {
+                if(crossword[j][i] != 0 && crossword[j][i] != 1) {
+                    textFields[j][i] = new JTextField(Character.toString(crossword[j][i]));
+                    textFields[j][i].setFont(textFields[j][i].getFont().deriveFont(20.0f));
+                    add(textFields[j][i]);
+                }
+            }
+        }
+
+    }
+
+    ArrayList<String> parseJSON(String json) {
         JSONParser parser = new JSONParser();
         ArrayList<String> words = new ArrayList<String>();
 
         try {
-            Object obj = parser.parse(new BufferedReader(new FileReader( "src/json/wordlist.json" )));
+            Object obj = parser.parse(new BufferedReader(new FileReader( json )));
 
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray dict = (JSONArray) jsonObject.get("dict");
@@ -212,77 +263,83 @@ class CrosswordPanel extends JPanel {
             pe.printStackTrace();
         }
 
+        return words;
+    }
 
-        for(ArrayList<Pair> arr : emptySpaces) {
+    boolean canPlaceChar(int row, int col, char c) {
+        if(crossword[row][col] == 0 || crossword[row][col] == c) {
+            return true;
+        }
+        return false;
+    }
 
-            if(arr.get(0).getKey().equals(arr.get(1).getKey())) { // same x- horizontal
-                System.out.println(arr.toString());
-                int length = (int) arr.get(1).getValue() - (int) arr.get(0).getValue() +1;
-                int row = (int) arr.get(0).getKey();
-
-                String choice = "";
-                for(String word : words) {
-                    if(word.length() == length && choice == "") { // word fits
-                        choice = word;
-                    }
-                }
-                words.remove(choice);
-                int counter = 0;
-
-                for(int i= (int) arr.get(0).getValue(); i<=(int) arr.get(1).getValue(); i++) {
-                    textFields[row][i] = new JTextField(Character.toString(choice.charAt(counter)));
-                    textFields[row][i].setFont(textFields[row][i].getFont().deriveFont(20.0f));
-                    add(textFields[row][i]);
-                    counter++;
-                }
-                for(int i= (int) arr.get(1).getValue()+1; i< w; i++) {
-                    add(new JLabel());
-                }
-            }
-            else { // same y - vertical
-                System.out.println(arr.toString());
-                int length = (int) arr.get(1).getKey() - (int) arr.get(0).getKey() +1;
-                int col = (int) arr.get(0).getValue();
-
-                String choice = "";
-                for(String word : words) {
-                    if(word.length() == length) { // word fits
-
-                        choice = word;
-                        break;
-                    }
-                }
-                words.remove(choice);
-                int counter = 0;
-
-                for(int i= (int) arr.get(0).getKey(); i<=(int) arr.get(1).getKey(); i++) {
-                    textFields[i][col] = new JTextField(Character.toString(choice.charAt(counter)));
-                    textFields[i][col].setFont(textFields[i][col].getFont().deriveFont(20.0f));
-                    System.out.println("add " + choice.charAt(counter) + " at " + i + ", " + col);
-                    counter++;
-                }/*
-                for(int i= (int) arr.get(1).getKey()+1; i< h; i++) {
-                    System.out.println("add jlabel at " + i + ", " + col);
-                    add(new JLabel());
-                }*/
-            }
-
+    boolean canPlaceWord(Pair<Integer, Integer> start, Pair<Integer, Integer> end, String word) {
+        String dir = "";
+        if(start.getValue() == end.getValue()) { // same y = horizontal
+            dir = "across";
+        }
+        else { // same x = vertical
+            dir = "down";
+        }
+        if(start.getKey() < 0 || start.getKey() >= w || start.getValue() < 0 || start.getValue() >= h) {
+            System.out.println("out of bounds");
+            return false;
         }
 
-/*
-        for (int y=0; y<h; y++) {
-            for (int x=0; x<w; x++) {
-                char c = crossword[x][y];
-                if (c != 0) {
-                    textFields[x][y] = new JTextField(String.valueOf(c));
-                    textFields[x][y].setFont(textFields[x][y].getFont().deriveFont(20.0f));
-                    add(textFields[x][y]);
-                }
-                else {
-                    add(new JLabel());
+        if (dir.equals("across")) {
+            int length = end.getKey() - start.getKey() + 1;
+            if(word.length() == length) { // word fits space
+                for(int i = start.getKey(); i<end.getKey(); i++) {
+                    // check if placing this word will complete a word - i.e. all rows above and below are full
+                    String rowsAbove = "";
+                    String rowsBelow = "";
+                    if (start.getValue() > 0) { // check rows above
+                        for (int row = 0; row < start.getValue(); row++) {
+                            if (crossword[row][start.getValue()] != 1)
+                                rowsAbove.concat(Character.toString(crossword[row][start.getValue()]));
+                        }
+                    }
+                    if (start.getValue() < h) { // check rows below
+                        for (int row = start.getValue(); row < h; row++) {
+                            if (crossword[row][start.getValue()] != 1)
+                                rowsBelow.concat(Character.toString(crossword[row][start.getValue()]));
+                        }
+                    }
+                    String str = rowsAbove + crossword[i][start.getValue()] + rowsBelow;
+                    if (str.length() >= h && !words.contains(str)) {
+                        return false;
+                    }
                 }
             }
-        }*/
+        }
+        else if (dir.equals("down")) {
+            int length = end.getValue() - start.getValue() + 1;
+            if(word.length() == length) { // word fits space
+                for(int i = start.getValue(); i<end.getValue(); i++) {
+                    // check if placing this word will complete a word - i.e. all cols left and right are full
+                    String colsLeft = "";
+                    String colsRight = "";
+                    if (start.getKey() > 0) { // check cols left
+                        for (int col = 0; col < start.getKey(); col++) {
+                            if (crossword[start.getKey()][col] != 1)
+                                colsLeft.concat(Character.toString(crossword[start.getKey()][col]));
+                        }
+                    }
+                    if (start.getValue() < h) { // check rows below
+                        for (int col = start.getKey(); col < w; col++) {
+                            if (crossword[start.getKey()][col] != 1)
+                                colsRight.concat(Character.toString(crossword[start.getKey()][col]));
+                        }
+                    }
+                    String str = colsLeft + crossword[i][start.getValue()] + colsRight;
+                    if (str.length() >= h && !words.contains(str)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+
     }
 
     char[][] getCrossword() {

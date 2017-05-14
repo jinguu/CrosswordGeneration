@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="471606aa-a174-4841-a2e1-70f535f950b1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/CS4701/wordlist.json" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen$1.class" afterPath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen$2.class" afterPath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen.class" afterPath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS4701/CrosswordPanel.class" afterPath="$PROJECT_DIR$/out/production/CS4701/CrosswordPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/java_json.xml" afterPath="$PROJECT_DIR$/.idea/libraries/java_json.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CS4701.iml" afterPath="$PROJECT_DIR$/CS4701.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CrosswordGen.java" afterPath="$PROJECT_DIR$/src/CrosswordGen.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -29,15 +21,25 @@
       <file leaf-file-name="CrosswordGen.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CrosswordGen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="170" column="10" lean-forward="false" selection-start-line="170" selection-start-column="10" selection-end-line="170" selection-end-column="10" />
+            <state relative-caret-position="2210">
+              <caret line="216" column="13" lean-forward="true" selection-start-line="216" selection-start-column="13" selection-end-line="216" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3388#3394#0" expanded="true" />
-                <element signature="e#3931#3937#0" expanded="true" />
-                <element signature="e#4751#4757#0" expanded="true" />
-                <element signature="e#5294#5300#0" expanded="true" />
+                <element signature="e#3417#3423#0" expanded="true" />
+                <element signature="e#3960#3966#0" expanded="true" />
+                <element signature="e#4780#4786#0" expanded="true" />
+                <element signature="e#5323#5329#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="String.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/String.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="657" column="0" lean-forward="false" selection-start-line="657" selection-start-column="0" selection-end-line="657" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -56,6 +58,8 @@
       <find>getcross</find>
       <find>array</find>
       <find>textfields</find>
+      <find>crossword[</find>
+      <find>arraylist&lt;string&gt;</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -484,10 +488,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3388#3394#0" expanded="true" />
-            <element signature="e#3931#3937#0" expanded="true" />
-            <element signature="e#4751#4757#0" expanded="true" />
-            <element signature="e#5294#5300#0" expanded="true" />
+            <element signature="e#3417#3423#0" expanded="true" />
+            <element signature="e#3960#3966#0" expanded="true" />
+            <element signature="e#4780#4786#0" expanded="true" />
+            <element signature="e#5323#5329#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -505,10 +509,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3388#3394#0" expanded="true" />
-            <element signature="e#3931#3937#0" expanded="true" />
-            <element signature="e#4751#4757#0" expanded="true" />
-            <element signature="e#5294#5300#0" expanded="true" />
+            <element signature="e#3417#3423#0" expanded="true" />
+            <element signature="e#3960#3966#0" expanded="true" />
+            <element signature="e#4780#4786#0" expanded="true" />
+            <element signature="e#5323#5329#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -549,10 +553,10 @@
           <caret line="0" column="21" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3388#3394#0" expanded="true" />
-            <element signature="e#3931#3937#0" expanded="true" />
-            <element signature="e#4751#4757#0" expanded="true" />
-            <element signature="e#5294#5300#0" expanded="true" />
+            <element signature="e#3417#3423#0" expanded="true" />
+            <element signature="e#3960#3966#0" expanded="true" />
+            <element signature="e#4780#4786#0" expanded="true" />
+            <element signature="e#5323#5329#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -580,16 +584,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="657" column="0" lean-forward="false" selection-start-line="657" selection-start-column="0" selection-end-line="657" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CrosswordGen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="170" column="10" lean-forward="false" selection-start-line="170" selection-start-column="10" selection-end-line="170" selection-end-column="10" />
+        <state relative-caret-position="2210">
+          <caret line="216" column="13" lean-forward="true" selection-start-line="216" selection-start-column="13" selection-end-line="216" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3388#3394#0" expanded="true" />
-            <element signature="e#3931#3937#0" expanded="true" />
-            <element signature="e#4751#4757#0" expanded="true" />
-            <element signature="e#5294#5300#0" expanded="true" />
+            <element signature="e#3417#3423#0" expanded="true" />
+            <element signature="e#3960#3966#0" expanded="true" />
+            <element signature="e#4780#4786#0" expanded="true" />
+            <element signature="e#5323#5329#0" expanded="true" />
           </folding>
         </state>
       </provider>
