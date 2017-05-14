@@ -56,7 +56,7 @@ public class CrosswordGen {
         });
         f.getContentPane().add(generateButton, BorderLayout.SOUTH);
 
-        f.setSize(700, 700);
+        f.setSize(500, 500);
         f.setLocationRelativeTo(null);
         f.setVisible(true);
     }
@@ -110,7 +110,7 @@ class CrosswordPanel extends JPanel {
             Pair<Integer, Integer> start = new Pair(x,0);
             int len = 0;
             for (int y=0; y<h; y++) {
-                char c = array[y][x];
+                char c = array[x][y];
                 if (c == (char) 0 ) { // reached null
                     if(len > 1) { // word is longer than 1
                         Pair<Integer, Integer> end = new Pair(x,y-1);
@@ -154,7 +154,7 @@ class CrosswordPanel extends JPanel {
             Pair<Integer, Integer> start = new Pair(0,y);
             int len = 0;
             for (int x=0; x<w; x++) {
-                char c = array[y][x];
+                char c = array[x][y];
 
                 if (c == 0) { // reached null
                     if(len > 1) { // word is longer than 1
@@ -216,18 +216,19 @@ class CrosswordPanel extends JPanel {
             else if(arr.get(0).getKey() == arr.get(1).getKey()) {
                 dir = "across";
             }
-            System.out.println(arr);
+            System.out.println(dir);
             String choice = "";
             for(String word : words) {
                 if(canPlaceWord(arr.get(0), arr.get(1), word) && choice == "") {
                     choice = word;
+                    break;
                 }
             }
-            System.out.println(dir);
+            System.out.println(choice);
             if (dir.equals("across")) {
                 int counter = 0;
                 for(int i= (int) arr.get(0).getValue(); i<((int) arr.get(0).getValue()+choice.length()); i++) {
-                    System.out.println("set " + choice.charAt(counter) + " at " + (int) arr.get(0).getValue() + ", " + i);
+                    // System.out.println("set " + choice.charAt(counter) + " at " + (int) arr.get(0).getKey() + ", " + i);
                     crossword[(int) arr.get(0).getKey()][i] = choice.charAt(counter);
                     counter++;
                 }
@@ -235,9 +236,11 @@ class CrosswordPanel extends JPanel {
             if (dir.equals("down")) {
                 int counter = 0;
                 for(int i= (int) arr.get(0).getKey(); i<((int) arr.get(0).getKey() + choice.length()); i++) {
+                    /*
                     System.out.println("key: " + arr.get(0));
                     System.out.println(arr.get(1).getKey());
                     System.out.println("set " + choice.charAt(counter) + " at " + i + ", " + (int) arr.get(0).getValue());
+                    */
                     crossword[i][(int) arr.get(0).getValue()] = choice.charAt(counter);
                     counter++;
                 }
@@ -245,12 +248,22 @@ class CrosswordPanel extends JPanel {
             words.remove(choice);
         }
 
-        for(int i=0; i<h; i++) {
-            for(int j=0; j<w; j++) {
-                if(crossword[j][i] != 0 && crossword[j][i] != 1) {
-                    textFields[j][i] = new JTextField(Character.toString(crossword[j][i]));
-                    textFields[j][i].setFont(textFields[j][i].getFont().deriveFont(20.0f));
-                    add(textFields[j][i]);
+        for(int i=0; i<w; i++) {
+            for(int j=0; j<h; j++) {
+                if(crossword[i][j] != 0 && crossword[i][j] != 1) {
+                    textFields[i][j] = new JTextField(Character.toString(crossword[i][j]));
+                    textFields[i][j].setFont(textFields[i][j].getFont().deriveFont(20.0f));
+                    // System.out.println("set " + crossword[i][j] + " at " + i + ", " + j);
+                    add(textFields[i][j]);
+                }
+                else if(crossword[i][j] == 0) {
+                    add(new JLabel());
+                }
+                else if(crossword[i][j] == 1) {
+                    textFields[i][j] = new JTextField(" ");
+                    textFields[i][j].setFont(textFields[i][j].getFont().deriveFont(20.0f));
+                    // System.out.println("set blank at " + i + ", " + j);
+                    add(textFields[i][j]);
                 }
             }
         }
@@ -294,20 +307,20 @@ class CrosswordPanel extends JPanel {
 
     boolean canPlaceWord(Pair<Integer, Integer> start, Pair<Integer, Integer> end, String word) {
         String dir = "";
-        if(start.getValue() == end.getValue()) { // same y = horizontal
+        if(start.getKey() == end.getKey()) { // same x = horizontal
             dir = "across";
         }
-        else { // same x = vertical
+        else { // same y = vertical
             dir = "down";
         }
         if(start.getKey() < 0 || start.getKey() >= w || start.getValue() < 0 || start.getValue() >= h) {
             System.out.println("out of bounds");
             return false;
         }
-
-        if (dir.equals("across")) {
+        if (dir.equals("down")) {
             int length = end.getKey() - start.getKey() + 1;
             if(word.length() == length) { // word fits space
+                System.out.println(length);
                 for(int i = start.getKey(); i<end.getKey(); i++) {
                     // check if placing this word will complete a word - i.e. all rows above and below are full
                     String rowsAbove = "";
@@ -330,10 +343,14 @@ class CrosswordPanel extends JPanel {
                     }
                 }
             }
+            else {
+                return false;
+            }
         }
-        else if (dir.equals("down")) {
+        else if (dir.equals("across")) {
             int length = end.getValue() - start.getValue() + 1;
             if(word.length() == length) { // word fits space
+                System.out.println(length);
                 for(int i = start.getValue(); i<end.getValue(); i++) {
                     // check if placing this word will complete a word - i.e. all cols left and right are full
                     String colsLeft = "";
@@ -355,6 +372,8 @@ class CrosswordPanel extends JPanel {
                         return false;
                     }
                 }
+            }else {
+                return false;
             }
         }
         return true;

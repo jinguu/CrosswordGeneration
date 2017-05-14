@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="471606aa-a174-4841-a2e1-70f535f950b1" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen$1.class" afterPath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen$2.class" afterPath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen.class" afterPath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS4701/CrosswordPanel.class" afterPath="$PROJECT_DIR$/out/production/CS4701/CrosswordPanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CrosswordGen.java" afterPath="$PROJECT_DIR$/src/CrosswordGen.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,24 +26,26 @@
       <file leaf-file-name="CrosswordGen.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CrosswordGen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2210">
-              <caret line="216" column="13" lean-forward="true" selection-start-line="216" selection-start-column="13" selection-end-line="216" selection-end-column="13" />
+            <state relative-caret-position="23">
+              <caret line="318" column="9" lean-forward="false" selection-start-line="318" selection-start-column="9" selection-end-line="318" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3417#3423#0" expanded="true" />
-                <element signature="e#3960#3966#0" expanded="true" />
-                <element signature="e#4780#4786#0" expanded="true" />
-                <element signature="e#5323#5329#0" expanded="true" />
+                <element signature="e#731#732#0" expanded="true" />
+                <element signature="e#781#782#0" expanded="true" />
+                <element signature="e#3515#3521#0" expanded="true" />
+                <element signature="e#4212#4218#0" expanded="true" />
+                <element signature="e#5114#5120#0" expanded="true" />
+                <element signature="e#5810#5816#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="String.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/String.java">
+      <file leaf-file-name="wordlist.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/json/wordlist.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="657" column="0" lean-forward="false" selection-start-line="657" selection-start-column="0" selection-end-line="657" selection-end-column="0" />
+            <state relative-caret-position="323">
+              <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -60,6 +67,8 @@
       <find>textfields</find>
       <find>crossword[</find>
       <find>arraylist&lt;string&gt;</find>
+      <find>system.</find>
+      <find>println(dir</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -96,7 +105,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1370" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectView">
@@ -430,7 +439,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -448,7 +457,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25184637" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -488,10 +497,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3417#3423#0" expanded="true" />
-            <element signature="e#3960#3966#0" expanded="true" />
-            <element signature="e#4780#4786#0" expanded="true" />
-            <element signature="e#5323#5329#0" expanded="true" />
+            <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#3515#3521#0" expanded="true" />
+            <element signature="e#4212#4218#0" expanded="true" />
+            <element signature="e#5114#5120#0" expanded="true" />
+            <element signature="e#5810#5816#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -509,10 +520,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3417#3423#0" expanded="true" />
-            <element signature="e#3960#3966#0" expanded="true" />
-            <element signature="e#4780#4786#0" expanded="true" />
-            <element signature="e#5323#5329#0" expanded="true" />
+            <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#3515#3521#0" expanded="true" />
+            <element signature="e#4212#4218#0" expanded="true" />
+            <element signature="e#5114#5120#0" expanded="true" />
+            <element signature="e#5810#5816#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -553,10 +566,12 @@
           <caret line="0" column="21" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3417#3423#0" expanded="true" />
-            <element signature="e#3960#3966#0" expanded="true" />
-            <element signature="e#4780#4786#0" expanded="true" />
-            <element signature="e#5323#5329#0" expanded="true" />
+            <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#3515#3521#0" expanded="true" />
+            <element signature="e#4212#4218#0" expanded="true" />
+            <element signature="e#5114#5120#0" expanded="true" />
+            <element signature="e#5810#5816#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -569,13 +584,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CrosswordGeneration/Panel.java" />
-    <entry file="file://$PROJECT_DIR$/src/json/wordlist.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CrosswordPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -592,16 +600,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/json/wordlist.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CrosswordGen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2210">
-          <caret line="216" column="13" lean-forward="true" selection-start-line="216" selection-start-column="13" selection-end-line="216" selection-end-column="13" />
+        <state relative-caret-position="23">
+          <caret line="318" column="9" lean-forward="false" selection-start-line="318" selection-start-column="9" selection-end-line="318" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3417#3423#0" expanded="true" />
-            <element signature="e#3960#3966#0" expanded="true" />
-            <element signature="e#4780#4786#0" expanded="true" />
-            <element signature="e#5323#5329#0" expanded="true" />
+            <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#3515#3521#0" expanded="true" />
+            <element signature="e#4212#4218#0" expanded="true" />
+            <element signature="e#5114#5120#0" expanded="true" />
+            <element signature="e#5810#5816#0" expanded="true" />
           </folding>
         </state>
       </provider>
