@@ -70,7 +70,7 @@ public class CrosswordGen {
             {
                 if (random.nextFloat() > 0.2)
                 {
-                    char c = (char)('A' + random.nextInt(26));
+                    char c = 1;
                     crossword[x][y] = c;
                 }
                 else {
@@ -103,43 +103,6 @@ class CrosswordPanel extends JPanel {
 
 
         /*TODO: unify two for loops*/
-
-        for (int y=0; y<h; y++) {
-            Pair<Integer, Integer> start = new Pair(0,y);
-            int len = 0;
-            for (int x=0; x<w; x++) {
-                char c = array[x][y];
-                if (c == 0 ) { // reached null
-                    if(len > 1) { // word is longer than 1
-                        Pair<Integer, Integer> end = new Pair(x-1,y);
-                        ArrayList<Pair> toAdd = new ArrayList<Pair>(2);
-                        toAdd.add(start);
-                        toAdd.add(end);
-                        emptySpaces.add(toAdd);
-
-                        // reset
-                        start = new Pair(x+1,y);
-                        len = 0;
-                    }
-                }
-                else if(x == w-1) { // reached end of col
-                    if(len > 1) { // word is longer than 1
-                        Pair<Integer, Integer> end = new Pair(x,y);
-                        ArrayList<Pair> toAdd = new ArrayList<Pair>(2);
-                        toAdd.add(start);
-                        toAdd.add(end);
-                        emptySpaces.add(toAdd);
-
-                        // reset
-                        start = new Pair(x+1,y);
-                        len = 0;
-                    }
-                }
-                else {
-                    len++;
-                }
-            }
-        }
 
         for (int x=0; x<w; x++) {
             Pair<Integer, Integer> start = new Pair(x,0);
@@ -178,6 +141,44 @@ class CrosswordPanel extends JPanel {
             }
         }
 
+        for (int y=0; y<h; y++) {
+            Pair<Integer, Integer> start = new Pair(0,y);
+            int len = 0;
+            for (int x=0; x<w; x++) {
+                char c = array[x][y];
+                if (c == 0 ) { // reached null
+                    if(len > 1) { // word is longer than 1
+                        Pair<Integer, Integer> end = new Pair(x-1,y);
+                        ArrayList<Pair> toAdd = new ArrayList<Pair>(2);
+                        toAdd.add(start);
+                        toAdd.add(end);
+                        emptySpaces.add(toAdd);
+
+                        // reset
+                        start = new Pair(x+1,y);
+                        len = 0;
+                    }
+                }
+                else if(x == w-1) { // reached end of col
+                    if(len > 1) { // word is longer than 1
+                        Pair<Integer, Integer> end = new Pair(x,y);
+                        ArrayList<Pair> toAdd = new ArrayList<Pair>(2);
+                        toAdd.add(start);
+                        toAdd.add(end);
+                        emptySpaces.add(toAdd);
+
+                        // reset
+                        start = new Pair(x+1,y);
+                        len = 0;
+                    }
+                }
+                else {
+                    len++;
+                }
+            }
+        }
+
+
         fillCrossword();
 
         getParent().validate();
@@ -211,39 +212,59 @@ class CrosswordPanel extends JPanel {
             pe.printStackTrace();
         }
 
+
         for(ArrayList<Pair> arr : emptySpaces) {
 
-            if(arr.get(0).getKey().equals(arr.get(1).getKey())) { // same x
-                int length = (int) arr.get(1).getValue()+1;
-                int row = (int) arr.get(0).getValue();
+            if(arr.get(0).getKey().equals(arr.get(1).getKey())) { // same x- horizontal
+                System.out.println(arr.toString());
+                int length = (int) arr.get(1).getValue() - (int) arr.get(0).getValue() +1;
+                int row = (int) arr.get(0).getKey();
 
+                String choice = "";
                 for(String word : words) {
-                    int counter = 0;
-                    if(word.length() == length) { // word fits
-                        for(int i= (int) arr.get(0).getValue(); i< length; i++) {
-                            textFields[row][i] = new JTextField(Character.toString(word.charAt(counter)));
-                            textFields[row][i].setFont(textFields[row][i].getFont().deriveFont(20.0f));
-                            add(textFields[row][i]);
-                            counter++;
-                        }
+                    if(word.length() == length && choice == "") { // word fits
+                        choice = word;
                     }
+                }
+                words.remove(choice);
+                int counter = 0;
+
+                for(int i= (int) arr.get(0).getValue(); i<=(int) arr.get(1).getValue(); i++) {
+                    textFields[row][i] = new JTextField(Character.toString(choice.charAt(counter)));
+                    textFields[row][i].setFont(textFields[row][i].getFont().deriveFont(20.0f));
+                    add(textFields[row][i]);
+                    counter++;
+                }
+                for(int i= (int) arr.get(1).getValue()+1; i< w; i++) {
+                    add(new JLabel());
                 }
             }
-            else { // same y
-                int length = (int) arr.get(1).getKey()+1;
-                int col = (int) arr.get(0).getKey();
+            else { // same y - vertical
+                System.out.println(arr.toString());
+                int length = (int) arr.get(1).getKey() - (int) arr.get(0).getKey() +1;
+                int col = (int) arr.get(0).getValue();
 
+                String choice = "";
                 for(String word : words) {
-                    int counter = 0;
                     if(word.length() == length) { // word fits
-                        for(int i= (int) arr.get(0).getKey(); i< length; i++) {
-                            textFields[i][col] = new JTextField(Character.toString(word.charAt(counter)));
-                            textFields[i][col].setFont(textFields[i][col].getFont().deriveFont(20.0f));
-                            add(textFields[i][col]);
-                            counter++;
-                        }
+
+                        choice = word;
+                        break;
                     }
                 }
+                words.remove(choice);
+                int counter = 0;
+
+                for(int i= (int) arr.get(0).getKey(); i<=(int) arr.get(1).getKey(); i++) {
+                    textFields[i][col] = new JTextField(Character.toString(choice.charAt(counter)));
+                    textFields[i][col].setFont(textFields[i][col].getFont().deriveFont(20.0f));
+                    System.out.println("add " + choice.charAt(counter) + " at " + i + ", " + col);
+                    counter++;
+                }/*
+                for(int i= (int) arr.get(1).getKey()+1; i< h; i++) {
+                    System.out.println("add jlabel at " + i + ", " + col);
+                    add(new JLabel());
+                }*/
             }
 
         }
