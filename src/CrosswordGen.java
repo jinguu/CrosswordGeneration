@@ -321,10 +321,14 @@ class CrosswordPanel extends JPanel {
             int length = end.getKey() - start.getKey() + 1;
             if(word.length() == length) { // word fits space
                 System.out.println(length);
-                for(int i = start.getKey(); i<end.getKey(); i++) {
+                for(int i = start.getKey(); i<=end.getKey(); i++) {
+                    /*if(!canPlaceChar(i,start.getValue(),word.charAt(counter))) {
+                            return false;
+                        }*/
                     // check if placing this word will complete a word - i.e. all rows above and below are full
                     String rowsAbove = "";
                     String rowsBelow = "";
+                    int counter = 0;
                     if (start.getValue() > 0) { // check rows above
                         for (int row = 0; row < start.getValue(); row++) {
                             if (crossword[row][start.getValue()] != 1)
@@ -337,10 +341,12 @@ class CrosswordPanel extends JPanel {
                                 rowsBelow.concat(Character.toString(crossword[row][start.getValue()]));
                         }
                     }
-                    String str = rowsAbove + crossword[i][start.getValue()] + rowsBelow;
+                    String str = rowsAbove.concat(Character.toString(crossword[i][start.getValue()])).concat(rowsBelow);
+                    System.out.println("current letter: " + crossword[i][start.getValue()]);
                     if (str.length() >= h && !words.contains(str)) {
                         return false;
                     }
+                    counter++;
                 }
             }
             else {
@@ -351,26 +357,40 @@ class CrosswordPanel extends JPanel {
             int length = end.getValue() - start.getValue() + 1;
             if(word.length() == length) { // word fits space
                 System.out.println(length);
-                for(int i = start.getValue(); i<end.getValue(); i++) {
-                    // check if placing this word will complete a word - i.e. all cols left and right are full
-                    String colsLeft = "";
-                    String colsRight = "";
-                    if (start.getKey() > 0) { // check cols left
-                        for (int col = 0; col < start.getKey(); col++) {
-                            if (crossword[start.getKey()][col] != 1)
-                                colsLeft.concat(Character.toString(crossword[start.getKey()][col]));
+                int counter = 0;
+
+                for(int i = start.getValue(); i<=end.getValue(); i++) {
+                    /*if(!canPlaceChar(start.getKey(),i,word.charAt(counter))) {
+                        return false;
+                    }*/
+                    String rowsAbove = "";
+                    String rowsBelow = "";
+                    // check if placing this word will complete a word - i.e. all rows above and below are full
+                    if (start.getKey() > 0) { // check rows above
+                        for (int row = 0; row < start.getKey(); row++) {
+                            System.out.println("row " + row);
+                            if (crossword[row][start.getValue()] != 1) {
+                                rowsAbove = rowsAbove.concat(Character.toString(crossword[row][start.getValue()]));
+                            }
+                            System.out.println("rowsabove: " + rowsAbove);
                         }
                     }
-                    if (start.getValue() < h) { // check rows below
+                    if (start.getValue() < h-1) { // check rows below
                         for (int col = start.getKey(); col < w; col++) {
                             if (crossword[start.getKey()][col] != 1)
-                                colsRight.concat(Character.toString(crossword[start.getKey()][col]));
+                                rowsBelow = rowsBelow.concat(Character.toString(crossword[start.getKey()][col]));
+                            System.out.println("rowsbelow: " + rowsBelow);
                         }
                     }
-                    String str = colsLeft + crossword[i][start.getValue()] + colsRight;
-                    if (str.length() >= h && !words.contains(str)) {
+                    String str = rowsAbove.concat(Character.toString(word.charAt(counter)));
+                    str = str.concat(rowsBelow);
+                    System.out.println("str: " + str);
+                    System.out.println("h: " + h + ", str len" + str.length());
+                    if (str.trim().length() >= h && !words.contains(str)) {
+                        System.out.println("false");
                         return false;
                     }
+                    counter++;
                 }
             }else {
                 return false;
