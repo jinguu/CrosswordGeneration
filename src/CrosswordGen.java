@@ -94,6 +94,7 @@ class CrosswordPanel extends JPanel {
     private int h;
     private ArrayList<ArrayList<Pair>> emptySpaces;
     ArrayList<String> words;
+    ArrayList<String> wordsLeft;
 
     CrosswordPanel () {
         words = parseJSON("src/json/wordlist.json");
@@ -209,47 +210,7 @@ class CrosswordPanel extends JPanel {
         System.out.println(crossword.toString());
         textFields = new JTextField[w][h];
 
-        ArrayList<String> wordsLeft = parseJSON("src/json/wordlist.json");
-
-        for(ArrayList<Pair> arr : emptySpaces) {
-            String dir = "";
-            System.out.println(arr);
-            if(arr.get(0).getValue() == arr.get(1).getValue()) {
-                dir = "down";
-            }
-            else if(arr.get(0).getKey() == arr.get(1).getKey()) {
-                dir = "across";
-            }
-            String choice = "";
-            for(String word : wordsLeft) {
-                if(canPlaceWord(arr.get(0), arr.get(1), word) && choice == "") {
-                    choice = word;
-                    break;
-                }
-            }
-            System.out.println(choice);
-            if (dir.equals("across")) {
-                int counter = 0;
-                for(int i= (int) arr.get(0).getValue(); i<((int) arr.get(0).getValue()+choice.length()); i++) {
-                    // System.out.println("set " + choice.charAt(counter) + " at " + (int) arr.get(0).getKey() + ", " + i);
-                    crossword[(int) arr.get(0).getKey()][i] = choice.charAt(counter);
-                    counter++;
-                }
-            }
-            if (dir.equals("down")) {
-                int counter = 0;
-                for(int i= (int) arr.get(0).getKey(); i<((int) arr.get(0).getKey() + choice.length()); i++) {
-                    /*
-                    System.out.println("key: " + arr.get(0));
-                    System.out.println(arr.get(1).getKey());
-                    System.out.println("set " + choice.charAt(counter) + " at " + i + ", " + (int) arr.get(0).getValue());
-                    */
-                    crossword[i][(int) arr.get(0).getValue()] = choice.charAt(counter);
-                    counter++;
-                }
-            }
-            wordsLeft.remove(choice);
-        }
+        evalAndBacktrack();
 
         for(int i=0; i<w; i++) {
             for(int j=0; j<h; j++) {
@@ -271,6 +232,47 @@ class CrosswordPanel extends JPanel {
             }
         }
 
+    }
+
+    void evalAndBacktrack() {
+        wordsLeft = parseJSON("src/json/wordlist.json");
+        int backtracked = 0;
+        ArrayList<Pair> pattern = new ArrayList<>(); // space with least options
+        int minOptions = words.size();
+        int num;
+        int branchingFactor = words.size()/(crossword.length*crossword[0].length);
+
+
+        while(checkSpaces() != 0 || backtracked < 30) {
+            //finds the space with the least word options to initialize next
+            for (ArrayList<Pair> space : emptySpaces){
+                if ( (num = checkWordsAvailable(space.get(0),space.get(1))) < minOptions){
+                    minOptions = num;
+                    pattern = space;
+                }
+            }
+            String dir = "";
+            if (pattern.get(0).getValue() == pattern.get(1).getValue()) {
+                dir = "down";
+            } else if (pattern.get(0).getKey() == pattern.get(1).getKey()) {
+                dir = "across";
+            }
+            // choose a random word for pattern
+            String choice = "";
+            for (String word : wordsLeft) {
+                if (canPlaceWord(pattern.get(0), pattern.get(1), word) && choice == "") {
+                    choice = word;
+                    break;
+                }
+            }
+            wordsLeft.remove(choice);
+            // still matching words, find next matching
+            
+            // out of matching words
+            if(minOptions == 0) {
+                // backtrack
+            }
+        }
     }
 
     ArrayList<String> parseJSON(String json) {
@@ -477,30 +479,10 @@ class CrosswordPanel extends JPanel {
     }
 
     int checkWordsAvailable(Pair<Integer, Integer> start, Pair<Integer, Integer> end) {
-        String reg = "";
         int count = 0;
-        //changes rows
-        if (start.getKey() < end.getKey() ){
-            for( int i = start.getKey(); i <= end.getKey(); i++){
-                if (crossword[i][start.getValue()] == 1)
-                    reg+= ".";
-                else
-                    reg+= crossword[i][start.getValue()];
-            }
-        }
-        //changes columns
-        else {
-            for( int i = start.getValue(); i <= end.getValue(); i++){
-                if (crossword[start.getKey()][i] == 1)
-                    reg+= ".";
-                else
-                    reg+= crossword[start.getKey()][i];
-            }
-        }
-        for (String word : words) {
-            if (word.matches(reg)) {
+        for(String s: wordsLeft) {
+            if(canPlaceWord(start, end, s))
                 count++;
-            }
         }
         return count;
     }
@@ -516,18 +498,8 @@ class CrosswordPanel extends JPanel {
         }
         return count;
     }
-    void generateCrossword() {
-        ArrayList<Pair> pattern;
-        int wordOptions = 0;
-        int num;
 
-        //finds the space with the most word options to initialize next
-        for (ArrayList<Pair> space : emptySpaces){
-            if ( (num = checkWordsAvailable(space.get(0),space.get(1))) > wordOptions){
-                wordOptions = num;
-                pattern = space;
-            }
-        }
+    void generateCrossword() {
     }
 
 }

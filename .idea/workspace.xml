@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="471606aa-a174-4841-a2e1-70f535f950b1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS4701/CrosswordPanel.class" afterPath="$PROJECT_DIR$/out/production/CS4701/CrosswordPanel.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/CS4701/CrosswordPanel.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CrosswordGen.java" afterPath="$PROJECT_DIR$/src/CrosswordGen.java" />
     </list>
@@ -23,19 +26,19 @@
       <file leaf-file-name="CrosswordGen.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CrosswordGen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="428" column="36" lean-forward="false" selection-start-line="428" selection-start-column="36" selection-end-line="428" selection-end-column="36" />
+            <state relative-caret-position="255">
+              <caret line="269" column="12" lean-forward="false" selection-start-line="269" selection-start-column="12" selection-end-line="269" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#731#732#0" expanded="true" />
                 <element signature="e#781#782#0" expanded="true" />
-                <element signature="e#2803#2804#0" expanded="true" />
-                <element signature="e#2862#2863#0" expanded="true" />
-                <element signature="e#3567#3573#0" expanded="true" />
-                <element signature="e#4264#4270#0" expanded="true" />
-                <element signature="e#5166#5172#0" expanded="true" />
-                <element signature="e#5862#5868#0" expanded="true" />
-                <element signature="e#9683#9691#0" expanded="true" />
+                <element signature="e#2836#2837#0" expanded="true" />
+                <element signature="e#2895#2896#0" expanded="true" />
+                <element signature="e#3600#3606#0" expanded="true" />
+                <element signature="e#4297#4303#0" expanded="true" />
+                <element signature="e#5199#5205#0" expanded="true" />
+                <element signature="e#5895#5901#0" expanded="true" />
+                <element signature="e#9256#9264#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -44,8 +47,8 @@
       <file leaf-file-name="wordlist.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/json/wordlist.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="290" column="5" lean-forward="true" selection-start-line="290" selection-start-column="5" selection-end-line="290" selection-end-column="5" />
+            <state relative-caret-position="159">
+              <caret line="299" column="19" lean-forward="true" selection-start-line="299" selection-start-column="19" selection-end-line="299" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -62,8 +65,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>array</find>
-      <find>textfields</find>
       <find>crossword[</find>
       <find>arraylist&lt;string&gt;</find>
       <find>system.</find>
@@ -90,8 +91,10 @@
       <find>colsleft</find>
       <find>end</find>
       <find>colsright</find>
-      <find>colsright.insert</find>
       <find>to</find>
+      <find>colsright.insert</find>
+      <find>d</find>
+      <find>checkspaces</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -468,14 +471,14 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -522,13 +525,13 @@
             <element signature="imports" expanded="true" />
             <element signature="e#731#732#0" expanded="true" />
             <element signature="e#781#782#0" expanded="true" />
-            <element signature="e#2803#2804#0" expanded="true" />
-            <element signature="e#2862#2863#0" expanded="true" />
-            <element signature="e#3567#3573#0" expanded="true" />
-            <element signature="e#4264#4270#0" expanded="true" />
-            <element signature="e#5166#5172#0" expanded="true" />
-            <element signature="e#5862#5868#0" expanded="true" />
-            <element signature="e#9683#9691#0" expanded="true" />
+            <element signature="e#2836#2837#0" expanded="true" />
+            <element signature="e#2895#2896#0" expanded="true" />
+            <element signature="e#3600#3606#0" expanded="true" />
+            <element signature="e#4297#4303#0" expanded="true" />
+            <element signature="e#5199#5205#0" expanded="true" />
+            <element signature="e#5895#5901#0" expanded="true" />
+            <element signature="e#9256#9264#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -548,13 +551,13 @@
             <element signature="imports" expanded="true" />
             <element signature="e#731#732#0" expanded="true" />
             <element signature="e#781#782#0" expanded="true" />
-            <element signature="e#2803#2804#0" expanded="true" />
-            <element signature="e#2862#2863#0" expanded="true" />
-            <element signature="e#3567#3573#0" expanded="true" />
-            <element signature="e#4264#4270#0" expanded="true" />
-            <element signature="e#5166#5172#0" expanded="true" />
-            <element signature="e#5862#5868#0" expanded="true" />
-            <element signature="e#9683#9691#0" expanded="true" />
+            <element signature="e#2836#2837#0" expanded="true" />
+            <element signature="e#2895#2896#0" expanded="true" />
+            <element signature="e#3600#3606#0" expanded="true" />
+            <element signature="e#4297#4303#0" expanded="true" />
+            <element signature="e#5199#5205#0" expanded="true" />
+            <element signature="e#5895#5901#0" expanded="true" />
+            <element signature="e#9256#9264#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -597,13 +600,13 @@
             <element signature="imports" expanded="true" />
             <element signature="e#731#732#0" expanded="true" />
             <element signature="e#781#782#0" expanded="true" />
-            <element signature="e#2803#2804#0" expanded="true" />
-            <element signature="e#2862#2863#0" expanded="true" />
-            <element signature="e#3567#3573#0" expanded="true" />
-            <element signature="e#4264#4270#0" expanded="true" />
-            <element signature="e#5166#5172#0" expanded="true" />
-            <element signature="e#5862#5868#0" expanded="true" />
-            <element signature="e#9683#9691#0" expanded="true" />
+            <element signature="e#2836#2837#0" expanded="true" />
+            <element signature="e#2895#2896#0" expanded="true" />
+            <element signature="e#3600#3606#0" expanded="true" />
+            <element signature="e#4297#4303#0" expanded="true" />
+            <element signature="e#5199#5205#0" expanded="true" />
+            <element signature="e#5895#5901#0" expanded="true" />
+            <element signature="e#9256#9264#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -634,27 +637,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/json/wordlist.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="290" column="5" lean-forward="true" selection-start-line="290" selection-start-column="5" selection-end-line="290" selection-end-column="5" />
+        <state relative-caret-position="159">
+          <caret line="299" column="19" lean-forward="true" selection-start-line="299" selection-start-column="19" selection-end-line="299" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CrosswordGen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="428" column="36" lean-forward="false" selection-start-line="428" selection-start-column="36" selection-end-line="428" selection-end-column="36" />
+        <state relative-caret-position="255">
+          <caret line="269" column="12" lean-forward="false" selection-start-line="269" selection-start-column="12" selection-end-line="269" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#731#732#0" expanded="true" />
             <element signature="e#781#782#0" expanded="true" />
-            <element signature="e#2803#2804#0" expanded="true" />
-            <element signature="e#2862#2863#0" expanded="true" />
-            <element signature="e#3567#3573#0" expanded="true" />
-            <element signature="e#4264#4270#0" expanded="true" />
-            <element signature="e#5166#5172#0" expanded="true" />
-            <element signature="e#5862#5868#0" expanded="true" />
-            <element signature="e#9683#9691#0" expanded="true" />
+            <element signature="e#2836#2837#0" expanded="true" />
+            <element signature="e#2895#2896#0" expanded="true" />
+            <element signature="e#3600#3606#0" expanded="true" />
+            <element signature="e#4297#4303#0" expanded="true" />
+            <element signature="e#5199#5205#0" expanded="true" />
+            <element signature="e#5895#5901#0" expanded="true" />
+            <element signature="e#9256#9264#0" expanded="true" />
           </folding>
         </state>
       </provider>
