@@ -96,6 +96,10 @@ class CrosswordPanel extends JPanel {
     private ArrayList<ArrayList<Pair>> emptySpaces;
     ArrayList<String> words;
 
+    CrosswordPanel () {
+        words = parseJSON("src/json/wordlist.json");
+    }
+
     void setCrossword(char array[][]) {
         crossword = array;
         removeAll();
@@ -197,15 +201,15 @@ class CrosswordPanel extends JPanel {
         }
 
         System.out.println(emptySpaces);
+        System.out.println("regex: " + checkWordsAvailable(new Pair(0,0), new Pair(0,2)));
         fillCrossword();
-
+        System.out.println("regex: " + checkWordsAvailable(new Pair(0,0), new Pair(0,2)));
         getParent().validate();
         repaint();
     }
 
     void fillCrossword() {
         textFields = new JTextField[w][h];
-        words = parseJSON("src/json/wordlist.json");
 
         for(ArrayList<Pair> arr : emptySpaces) {
             String dir = "";
@@ -416,6 +420,53 @@ class CrosswordPanel extends JPanel {
             }
         }
         return crossword;
+    }
+
+    int checkWordsAvailable(Pair<Integer, Integer> start, Pair<Integer, Integer> end) {
+        String reg = "";
+        int count = 0;
+        //changes rows
+        if (start.getKey() < end.getKey() ){
+            for( int i = start.getKey(); i <= end.getKey(); i++){
+                if (crossword[i][start.getValue()] == 1)
+                    reg+= ".";
+                else
+                    reg+= crossword[i][start.getValue()];
+            }
+        }
+        //changes columns
+        else {
+            for( int i = start.getValue(); i <= end.getValue(); i++){
+                if (crossword[start.getKey()][i] == 1)
+                    reg+= ".";
+                else
+                    reg+= crossword[start.getKey()][i];
+            }
+        }
+        for (String word : words) {
+            if (word.matches(reg) || word.equals(reg)) {
+                System.out.println("in");
+                count++;
+            }
+        }
+        System.out.println(count);
+        System.out.println(x.matches("the"));
+        return count;
+    }
+
+    int checkSpaces() {
+        int count = 0;
+        for (int row = 0; row < h; row++) {
+            for (int col = 0; col < w; col++){
+                 if (crossword[row][col] == 1){
+                     count++;
+                 }
+            }
+        }
+        return count;
+    }
+    void generateCrossword() {
+
     }
 
 }
