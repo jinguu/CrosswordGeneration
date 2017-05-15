@@ -97,7 +97,7 @@ class CrosswordPanel extends JPanel {
     ArrayList<String> wordsLeft;
 
     CrosswordPanel () {
-        words = parseJSON("src/json/wordlist.json");
+        words = parseJSON("src/json/common.json");
     }
 
     void setCrossword(char array[][]) {
@@ -207,10 +207,43 @@ class CrosswordPanel extends JPanel {
     }
 
     void fillCrossword() {
+        wordsLeft = parseJSON("src/json/common.json");
         System.out.println(crossword.toString());
         textFields = new JTextField[w][h];
 
-        evalAndBacktrack();
+        for (ArrayList<Pair> arr : emptySpaces) {
+            String dir = "";
+            System.out.println(arr);
+            if (arr.get(0).getValue() == arr.get(1).getValue()) {
+                dir = "down";
+            } else if (arr.get(0).getKey() == arr.get(1).getKey()) {
+                dir = "across";
+            }
+            String choice = "";
+            Collections.shuffle(wordsLeft);
+            for (String word : wordsLeft) {
+                if (canPlaceWord(arr.get(0), arr.get(1), word) && choice == "") {
+                    choice = word;
+                    break;
+                }
+            }
+            System.out.println(choice);
+            if (dir.equals("across")) {
+                int counter = 0;
+                for (int i = (int) arr.get(0).getValue(); i < ((int) arr.get(0).getValue() + choice.length()); i++) {
+                    crossword[(int) arr.get(0).getKey()][i] = choice.charAt(counter);
+                    counter++;
+                }
+            }
+            if (dir.equals("down")) {
+                int counter = 0;
+                for (int i = (int) arr.get(0).getKey(); i < ((int) arr.get(0).getKey() + choice.length()); i++) {
+                    crossword[i][(int) arr.get(0).getValue()] = choice.charAt(counter);
+                    counter++;
+                }
+            }
+            wordsLeft.remove(choice);
+        }
 
         for(int i=0; i<w; i++) {
             for(int j=0; j<h; j++) {
@@ -235,7 +268,6 @@ class CrosswordPanel extends JPanel {
     }
 
     void evalAndBacktrack() {
-        wordsLeft = parseJSON("src/json/wordlist.json");
         int backtracked = 0;
         ArrayList<Pair> pattern = new ArrayList<>(); // space with least options
         int minOptions = words.size();
@@ -267,7 +299,7 @@ class CrosswordPanel extends JPanel {
             }
             wordsLeft.remove(choice);
             // still matching words, find next matching
-            
+
             // out of matching words
             if(minOptions == 0) {
                 // backtrack
@@ -283,13 +315,15 @@ class CrosswordPanel extends JPanel {
             Object obj = parser.parse(new BufferedReader(new FileReader( json )));
 
             JSONObject jsonObject = (JSONObject) obj;
-            JSONArray dict = (JSONArray) jsonObject.get("dict");
-            Iterator i = dict.iterator();
-
-            while (i.hasNext()) {
-                JSONObject word = (JSONObject) i.next();
-                words.add(word.get("word").toString());
+            Object[] dict = ((JSONArray) jsonObject.get("dict")).toArray();
+            for(Object word: dict) {
+                words.add((String)word);
             }
+
+            /*while (i.hasNext()) {
+                System.out.println(i.toString());
+                words.add(i.toString());
+            }*/
 
         } catch (FileNotFoundException ex) {
             System.out.println("file not found");
