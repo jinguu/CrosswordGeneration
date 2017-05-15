@@ -200,9 +200,7 @@ class CrosswordPanel extends JPanel {
         }
 
         System.out.println(emptySpaces);
-        System.out.println("regex: " + checkWordsAvailable(new Pair(0,0), new Pair(0,2)));
         fillCrossword();
-        System.out.println("regex: " + checkWordsAvailable(new Pair(0,0), new Pair(0,2)));
         getParent().validate();
         repaint();
     }
@@ -499,7 +497,7 @@ class CrosswordPanel extends JPanel {
             }
         }
         for (String word : words) {
-            if (word.matches(reg) || word.equals(reg)) {
+            if (word.matches(reg)) {
                 count++;
             }
         }
@@ -518,7 +516,17 @@ class CrosswordPanel extends JPanel {
         return count;
     }
     void generateCrossword() {
+        ArrayList<Pair> pattern;
+        int wordOptions = 0;
+        int num;
 
+        //finds the space with the most word options to initialize next
+        for (ArrayList<Pair> space : emptySpaces){
+            if ( (num = checkWordsAvailable(space.get(0),space.get(1))) > wordOptions){
+                wordOptions = num;
+                pattern = space;
+            }
+        }
     }
 
 }
