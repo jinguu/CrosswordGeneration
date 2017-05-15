@@ -359,7 +359,7 @@ class CrosswordPanel extends JPanel {
                         for (int col = start.getValue()+1; col < w; col++) {
                             if (crossword[i][col] != 1) {
                                 if(crossword[i][col] != 0)
-                                    colsRight.insert(0, Character.toString(crossword[i][col]));
+                                    colsRight.append(Character.toString(crossword[i][col]));
                             }
                             if (crossword[i][col] == 0) { // you hit a null
                                 String str = colsLeft.toString().concat(Character.toString(word.charAt(counter))).concat(colsRight.toString());
@@ -375,8 +375,7 @@ class CrosswordPanel extends JPanel {
                         }
                         System.out.println("colsRight: " + colsRight);
                     }
-                    String str = colsLeft.insert(0, Character.toString(word.charAt(counter))).toString();
-                    str.concat(colsRight.toString());
+                    String str = colsLeft.toString().concat(Character.toString(word.charAt(counter))).concat(colsRight.toString());
                     System.out.println("str: " + str);
                     if (str.length() >= w && !words.contains(str)) {
                         System.out.println(words.contains(str));
@@ -427,7 +426,7 @@ class CrosswordPanel extends JPanel {
                         for (int row = start.getKey()+1; row < h; row++) {
                             if (crossword[row][i] != 1) {
                                 if (crossword[row][i] != 0)
-                                    rowsBelow = rowsBelow.append(Character.toString(crossword[row][i]));
+                                    rowsBelow.append(Character.toString(crossword[row][i]));
                             }
                             if (crossword[row][i] == 0) { // you hit a null
                                 String str = rowsAbove.toString().concat(Character.toString(word.charAt(counter))).concat(rowsBelow.toString());
@@ -445,8 +444,7 @@ class CrosswordPanel extends JPanel {
                         }
                         System.out.println("rowsBelow: " + rowsBelow);
                     }
-                    String str = rowsAbove.insert(0, Character.toString(word.charAt(counter))).toString();
-                    str.concat(rowsBelow.toString());
+                    String str = rowsAbove.toString().concat(Character.toString(word.charAt(counter))).concat(rowsBelow.toString());
                     if (str.trim().length() >= h && !words.contains(str)) {
                         System.out.println("false");
                         return false;
