@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="471606aa-a174-4841-a2e1-70f535f950b1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen.class" afterPath="$PROJECT_DIR$/out/production/CS4701/CrosswordGen.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS4701/CrosswordPanel.class" afterPath="$PROJECT_DIR$/out/production/CS4701/CrosswordPanel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CrosswordGen.java" afterPath="$PROJECT_DIR$/src/CrosswordGen.java" />
@@ -25,15 +24,18 @@
         <entry file="file://$PROJECT_DIR$/src/CrosswordGen.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="138">
-              <caret line="403" column="65" lean-forward="true" selection-start-line="403" selection-start-column="65" selection-end-line="403" selection-end-column="65" />
+              <caret line="428" column="36" lean-forward="false" selection-start-line="428" selection-start-column="36" selection-end-line="428" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#731#732#0" expanded="true" />
                 <element signature="e#781#782#0" expanded="true" />
-                <element signature="e#3483#3489#0" expanded="true" />
-                <element signature="e#4180#4186#0" expanded="true" />
-                <element signature="e#5082#5088#0" expanded="true" />
-                <element signature="e#5778#5784#0" expanded="true" />
+                <element signature="e#2803#2804#0" expanded="true" />
+                <element signature="e#2862#2863#0" expanded="true" />
+                <element signature="e#3567#3573#0" expanded="true" />
+                <element signature="e#4264#4270#0" expanded="true" />
+                <element signature="e#5166#5172#0" expanded="true" />
+                <element signature="e#5862#5868#0" expanded="true" />
+                <element signature="e#9683#9691#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,8 +44,8 @@
       <file leaf-file-name="wordlist.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/json/wordlist.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="19" />
+            <state relative-caret-position="142">
+              <caret line="290" column="5" lean-forward="true" selection-start-line="290" selection-start-column="5" selection-end-line="290" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -60,14 +62,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getcross</find>
       <find>array</find>
       <find>textfields</find>
       <find>crossword[</find>
       <find>arraylist&lt;string&gt;</find>
       <find>system.</find>
       <find>println(dir</find>
-      <find>ta</find>
       <find>crossword</find>
       <find>system.out.println</find>
       <find>cross</find>
@@ -83,7 +83,15 @@
       <find>that</find>
       <find>words</find>
       <find>this</find>
+      <find>be</find>
+      <find>thi</find>
+      <find>ta</find>
       <find>her</find>
+      <find>colsleft</find>
+      <find>end</find>
+      <find>colsright</find>
+      <find>colsright.insert</find>
+      <find>to</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -514,10 +522,13 @@
             <element signature="imports" expanded="true" />
             <element signature="e#731#732#0" expanded="true" />
             <element signature="e#781#782#0" expanded="true" />
-            <element signature="e#3483#3489#0" expanded="true" />
-            <element signature="e#4180#4186#0" expanded="true" />
-            <element signature="e#5082#5088#0" expanded="true" />
-            <element signature="e#5778#5784#0" expanded="true" />
+            <element signature="e#2803#2804#0" expanded="true" />
+            <element signature="e#2862#2863#0" expanded="true" />
+            <element signature="e#3567#3573#0" expanded="true" />
+            <element signature="e#4264#4270#0" expanded="true" />
+            <element signature="e#5166#5172#0" expanded="true" />
+            <element signature="e#5862#5868#0" expanded="true" />
+            <element signature="e#9683#9691#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -537,10 +548,13 @@
             <element signature="imports" expanded="true" />
             <element signature="e#731#732#0" expanded="true" />
             <element signature="e#781#782#0" expanded="true" />
-            <element signature="e#3483#3489#0" expanded="true" />
-            <element signature="e#4180#4186#0" expanded="true" />
-            <element signature="e#5082#5088#0" expanded="true" />
-            <element signature="e#5778#5784#0" expanded="true" />
+            <element signature="e#2803#2804#0" expanded="true" />
+            <element signature="e#2862#2863#0" expanded="true" />
+            <element signature="e#3567#3573#0" expanded="true" />
+            <element signature="e#4264#4270#0" expanded="true" />
+            <element signature="e#5166#5172#0" expanded="true" />
+            <element signature="e#5862#5868#0" expanded="true" />
+            <element signature="e#9683#9691#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -583,10 +597,13 @@
             <element signature="imports" expanded="true" />
             <element signature="e#731#732#0" expanded="true" />
             <element signature="e#781#782#0" expanded="true" />
-            <element signature="e#3483#3489#0" expanded="true" />
-            <element signature="e#4180#4186#0" expanded="true" />
-            <element signature="e#5082#5088#0" expanded="true" />
-            <element signature="e#5778#5784#0" expanded="true" />
+            <element signature="e#2803#2804#0" expanded="true" />
+            <element signature="e#2862#2863#0" expanded="true" />
+            <element signature="e#3567#3573#0" expanded="true" />
+            <element signature="e#4264#4270#0" expanded="true" />
+            <element signature="e#5166#5172#0" expanded="true" />
+            <element signature="e#5862#5868#0" expanded="true" />
+            <element signature="e#9683#9691#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -617,8 +634,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/json/wordlist.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="19" />
+        <state relative-caret-position="142">
+          <caret line="290" column="5" lean-forward="true" selection-start-line="290" selection-start-column="5" selection-end-line="290" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -626,15 +643,18 @@
     <entry file="file://$PROJECT_DIR$/src/CrosswordGen.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
-          <caret line="403" column="65" lean-forward="true" selection-start-line="403" selection-start-column="65" selection-end-line="403" selection-end-column="65" />
+          <caret line="428" column="36" lean-forward="false" selection-start-line="428" selection-start-column="36" selection-end-line="428" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#731#732#0" expanded="true" />
             <element signature="e#781#782#0" expanded="true" />
-            <element signature="e#3483#3489#0" expanded="true" />
-            <element signature="e#4180#4186#0" expanded="true" />
-            <element signature="e#5082#5088#0" expanded="true" />
-            <element signature="e#5778#5784#0" expanded="true" />
+            <element signature="e#2803#2804#0" expanded="true" />
+            <element signature="e#2862#2863#0" expanded="true" />
+            <element signature="e#3567#3573#0" expanded="true" />
+            <element signature="e#4264#4270#0" expanded="true" />
+            <element signature="e#5166#5172#0" expanded="true" />
+            <element signature="e#5862#5868#0" expanded="true" />
+            <element signature="e#9683#9691#0" expanded="true" />
           </folding>
         </state>
       </provider>
