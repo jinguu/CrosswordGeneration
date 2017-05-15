@@ -299,7 +299,9 @@ class CrosswordPanel extends JPanel {
     }
 
     boolean canPlaceChar(int row, int col, char c) {
-        if(crossword[row][col] == 0 || crossword[row][col] == c) {
+        System.out.println(crossword[row][col] == 1);
+        System.out.println(Character.toString(c));
+        if(crossword[row][col] == 1 || crossword[row][col] == c) {
             return true;
         }
         return false;
@@ -320,15 +322,14 @@ class CrosswordPanel extends JPanel {
         if (dir.equals("down")) {
             int length = end.getKey() - start.getKey() + 1;
             if(word.length() == length) { // word fits space
-                System.out.println(length);
+                int counter = 0;
                 for(int i = start.getKey(); i<=end.getKey(); i++) {
-                    /*if(!canPlaceChar(i,start.getValue(),word.charAt(counter))) {
-                            return false;
-                        }*/
                     // check if placing this word will complete a word - i.e. all rows above and below are full
                     String rowsAbove = "";
                     String rowsBelow = "";
-                    int counter = 0;
+                    if(!canPlaceChar(i,start.getValue(),word.charAt(counter))) {
+                        return false;
+                    }
                     if (start.getValue() > 0) { // check rows above
                         for (int row = 0; row < start.getValue(); row++) {
                             if (crossword[row][start.getValue()] != 1)
@@ -356,15 +357,13 @@ class CrosswordPanel extends JPanel {
         else if (dir.equals("across")) {
             int length = end.getValue() - start.getValue() + 1;
             if(word.length() == length) { // word fits space
-                System.out.println(length);
                 int counter = 0;
-
                 for(int i = start.getValue(); i<=end.getValue(); i++) {
-                    /*if(!canPlaceChar(start.getKey(),i,word.charAt(counter))) {
-                        return false;
-                    }*/
                     String rowsAbove = "";
                     String rowsBelow = "";
+                    if(!canPlaceChar(start.getKey(),i,word.charAt(counter))) {
+                        return false;
+                    }
                     // check if placing this word will complete a word - i.e. all rows above and below are full
                     if (start.getKey() > 0) { // check rows above
                         for (int row = 0; row < start.getKey(); row++) {
